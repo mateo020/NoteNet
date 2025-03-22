@@ -74,7 +74,7 @@ def clean_and_organize_text(text):
     return '\n\n'.join(organized)
 
 if __name__ == "__main__":
-    file_path = "C:/Users/moham/Pictures/Screenshots/File.png"  # Test with PDF or image
+    file_path = "C:/Users/moham/Pictures/Screenshots/Screenshot 2025-02-25 235549.png"  # Test with PDF or image
     extracted_text = extract_text_from_file(file_path)
     
     print("=== DOCUMENT CONTENTS ===")
