@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.api.router import api_router
 
 app = FastAPI()
 
@@ -15,3 +16,10 @@ app.add_middleware(
 @app.get("/")
 def read_root():
     return {"message": "FastAPI is working with CORS!"}
+# Include routers
+app.include_router(api_router, prefix="/api")
+
+# Print all registered routes
+print("\nRegistered routes:")
+for route in app.routes:
+    print(f"{route.path} [{route.methods}]") 
