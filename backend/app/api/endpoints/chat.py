@@ -3,6 +3,7 @@ from typing import Optional
 import os
 from pathlib import Path
 from .process_files import process_and_combine_files
+import json
 
 router = APIRouter()
 
@@ -51,12 +52,14 @@ async def upload_file(file: UploadFile = File(...)):
         # Process the file based on its type
         try:
             if content_type in allowed_audio_types:
-                combined_file = process_and_combine_files(audio_path=str(file_path))
+                combined_file = await process_and_combine_files(audio_path=str(file_path))
                 file_type = "audio"
+                print('audio')
                 print(combined_file)
             else:
-                combined_file = process_and_combine_files(document_path=str(file_path))
+                combined_file = await process_and_combine_files(document_path=str(file_path))
                 file_type = "document"
+                print('document')
                 print(combined_file)
             return {
                 "message": f"{file_type.capitalize()} file processed successfully",
@@ -82,4 +85,37 @@ async def upload_file(file: UploadFile = File(...)):
         raise HTTPException(
             status_code=500,
             detail=f"An error occurred while handling the file: {str(e)}"
+        )
+
+@router.get("/latest_entities")
+async def get_latest_entities():
+    """
+    Get the most recently created entities file.
+    """
+    entities_dir = Path("backend/app/entities")
+    if not entities_dir.exists():
+        raise HTTPException(
+            status_code=404,
+            detail="No entities found"
+        )
+    
+    # Get all JSON files in the entities directory
+    entity_files = list(entities_dir.glob("entities_*.json"))
+    if not entity_files:
+        raise HTTPException(
+            status_code=404,
+            detail="No entity files found"
+        )
+    
+    # Get the most recent file
+    latest_file = max(entity_files, key=lambda x: x.stat().st_mtime)
+    
+    try:
+        with open(latest_file, 'r', encoding='utf-8') as f:
+            entities = json.load(f)
+        return entities
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error reading entities file: {str(e)}"
         )
