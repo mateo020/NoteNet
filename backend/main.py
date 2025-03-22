@@ -3,10 +3,10 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-# Allow CORS so React can talk to FastAPI
+# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # React dev server
+    allow_origins=["http://localhost:5173"],  # allow Vite frontend
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -14,4 +14,4 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    return {"message": "FastAPI is working!"}
+    return {"message": "FastAPI is working with CORS!"}
