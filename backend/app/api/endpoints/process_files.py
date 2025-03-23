@@ -144,6 +144,10 @@ async def extract_relationships(entities: Dict) -> List[Dict]:
     Extract relationships between entities using OpenAI API.
     Returns a list of edges suitable for a knowledge graph.
     """
+    if not entities:
+        print("Warning: No entities provided to extract relationships")
+        return []
+        
     # Convert entities to a format suitable for the API
     entities_text = "\n".join([
         f"{entity}: {desc['description'] if isinstance(desc, dict) else desc}"
@@ -152,7 +156,7 @@ async def extract_relationships(entities: Dict) -> List[Dict]:
     
     try:
         response = await client.chat.completions.create(
-            model="gpt-4o-mini",
+            model="gpt-4",  # Changed from gpt-4o-mini to gpt-4
             messages=[
                 {
                     "role": "system",
@@ -181,6 +185,8 @@ async def extract_relationships(entities: Dict) -> List[Dict]:
         
         # Extract the JSON from the response
         response_text = response.choices[0].message.content
+        print(f"Raw API response: {response_text}")  # Debug log
+        
         try:
             # Try to find JSON in the response
             json_start = response_text.find('[')
@@ -189,6 +195,9 @@ async def extract_relationships(entities: Dict) -> List[Dict]:
                 relationships = json.loads(response_text[json_start:json_end])
                 print(f"Found {len(relationships)} relationships")
                 return relationships
+            else:
+                print("Warning: No JSON array found in response")
+                return []
         except json.JSONDecodeError as e:
             print(f"Error parsing relationships JSON: {e}")
             return []
@@ -281,6 +290,11 @@ async def process_and_combine_files(audio_path: str = None, document_path: str =
     # Extract entities and concepts
     try:
         entities = await extract_entities_and_concepts(final_text)
+        if not entities:
+            print("Warning: No entities were extracted from the text")
+            return str(output_file)
+            
+        print(f"Extracted {len(entities)} entities")  # Debug log
         
         # First save the entities file
         entities_file = entities_dir / f"entities_{unique_id}.json"
@@ -290,19 +304,35 @@ async def process_and_combine_files(audio_path: str = None, document_path: str =
         
         # Extract relationships using OpenAI API
         relationships = await extract_relationships(entities)
+        if not relationships:
+            print("Warning: No relationships were extracted")
+            return str(output_file)
+            
         unique_nodes = set()
         for edge in relationships:
             unique_nodes.add(edge['source'])
             unique_nodes.add(edge['target'])
         
+        if not unique_nodes:
+            print("Warning: No unique nodes found in relationships")
+            return str(output_file)
+            
+        print(f"Found {len(unique_nodes)} unique nodes")  # Debug log
+        
         # Create node-to-id mapping
         node_to_id = {node: str(idx + 1) for idx, node in enumerate(unique_nodes)}
         
-        # Save node-to-id mapping
-        node_mapping_file = entities_dir / f"node_mapping_{unique_id}.json"
-        with open(node_mapping_file, "w", encoding="utf-8") as f:
-            json.dump(node_to_id, f, indent=2, ensure_ascii=False)
-        print(f"Node mapping saved to: {node_mapping_file}")
+        # Create nodes array in the specified format with entity names as labels
+        nodes = [
+            {"id": node_to_id[node], "label": node}
+            for node in unique_nodes
+        ]
+        
+        # Save nodes file
+        nodes_file = entities_dir / f"nodes.json"
+        with open(nodes_file, "w", encoding="utf-8") as f:
+            json.dump(nodes, f, indent=2, ensure_ascii=False)
+        print(f"Nodes saved to: {nodes_file}")
         
         # Format edges with numeric IDs
         formatted_edges = []
@@ -318,12 +348,14 @@ async def process_and_combine_files(audio_path: str = None, document_path: str =
             })
         
         # Save relationships to a separate file
-        relationships_file = entities_dir / f"relationships_{unique_id}.json"
+        relationships_file = entities_dir / f"relationships.json"
         with open(relationships_file, "w", encoding="utf-8") as f:
             json.dump(formatted_edges, f, indent=2, ensure_ascii=False)
         print(f"Relationships saved to: {relationships_file}")
         
     except Exception as e:
         print(f"Error extracting entities and relationships: {e}")
+        import traceback
+        print(f"Traceback: {traceback.format_exc()}")  # Print full traceback
     
     return str(output_file) 
