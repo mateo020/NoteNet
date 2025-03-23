@@ -90,7 +90,7 @@ async def upload_file(file: UploadFile = File(...)):
 @router.get("/latest_entities")
 async def get_latest_entities():
     """
-    Get the most recently created entities file.
+    Get the most recently created entities and relationships files.
     """
     entities_dir = Path("backend/app/entities")
     if not entities_dir.exists():
@@ -109,13 +109,27 @@ async def get_latest_entities():
     
     # Get the most recent file
     latest_file = max(entity_files, key=lambda x: x.stat().st_mtime)
+    unique_id = latest_file.stem.split('_')[1]  # Extract the unique ID from the filename
     
     try:
+        # Read entities file
         with open(latest_file, 'r', encoding='utf-8') as f:
             entities = json.load(f)
-        return entities
+        
+        # Read corresponding relationships file
+        relationships_file = entities_dir / f"relationships_{unique_id}.json"
+        if relationships_file.exists():
+            with open(relationships_file, 'r', encoding='utf-8') as f:
+                relationships = json.load(f)
+        else:
+            relationships = []
+        
+        return {
+            "entities": entities,
+            "relationships": relationships
+        }
     except Exception as e:
         raise HTTPException(
             status_code=500,
-            detail=f"Error reading entities file: {str(e)}"
+            detail=f"Error reading files: {str(e)}"
         )

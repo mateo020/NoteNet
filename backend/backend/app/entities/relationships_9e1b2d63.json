@@ -1,0 +1,86 @@
+[
+  {
+    "source": "12",
+    "target": "3",
+    "id": "12-3",
+    "label": "lectures at"
+  },
+  {
+    "source": "3",
+    "target": "8",
+    "id": "3-8",
+    "label": "hosts lecture on"
+  },
+  {
+    "source": "8",
+    "target": "19",
+    "id": "8-19",
+    "label": "utilizes tools from"
+  },
+  {
+    "source": "19",
+    "target": "2",
+    "id": "19-2",
+    "label": "provides"
+  },
+  {
+    "source": "14",
+    "target": "21",
+    "id": "14-21",
+    "label": "applies"
+  },
+  {
+    "source": "1",
+    "target": "13",
+    "id": "1-13",
+    "label": "discusses"
+  },
+  {
+    "source": "13",
+    "target": "4",
+    "id": "13-4",
+    "label": "transforms into"
+  },
+  {
+    "source": "18",
+    "target": "15",
+    "id": "18-15",
+    "label": "is located in"
+  },
+  {
+    "source": "5",
+    "target": "13",
+    "id": "5-13",
+    "label": "provides data for"
+  },
+  {
+    "source": "22",
+    "target": "7",
+    "id": "22-7",
+    "label": "is used in"
+  },
+  {
+    "source": "20",
+    "target": "17",
+    "id": "20-17",
+    "label": "enhances"
+  },
+  {
+    "source": "16",
+    "target": "6",
+    "id": "16-6",
+    "label": "administered via"
+  },
+  {
+    "source": "9",
+    "target": "16",
+    "id": "9-16",
+    "label": "is covered in"
+  },
+  {
+    "source": "10",
+    "target": "11",
+    "id": "10-11",
+    "label": "occurs on"
+  }
+]

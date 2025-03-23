@@ -8,7 +8,6 @@ from dotenv import load_dotenv
 import uuid
 import json
 from typing import Dict, List
-
 # Load environment variables
 load_dotenv()
 
@@ -140,6 +139,64 @@ def extract_text_from_pdf(pdf_path: str) -> str:
         print(f"Error extracting text from PDF: {str(e)}")
         return ""
 
+async def extract_relationships(entities: Dict) -> List[Dict]:
+    """
+    Extract relationships between entities using OpenAI API.
+    Returns a list of edges suitable for a knowledge graph.
+    """
+    # Convert entities to a format suitable for the API
+    entities_text = "\n".join([
+        f"{entity}: {desc['description'] if isinstance(desc, dict) else desc}"
+        for entity, desc in entities.items()
+    ])
+    
+    try:
+        response = await client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {
+                    "role": "system",
+                    "content": """You are a knowledge graph expert. Analyze the given entities and their descriptions to identify meaningful relationships between them.
+                    Create relationships that capture how these entities are connected in the context of the text.
+                    Return the relationships in a specific JSON format."""
+                },
+                {
+                    "role": "user",
+                    "content": f"""Given these entities and their descriptions, identify meaningful relationships between them.
+                    Return a JSON array of relationships, where each relationship has:
+                    - source: the name of the source entity
+                    - target: the name of the target entity
+                    - relation: a verb or preposition describing the relationship
+                    - description: a brief explanation of the relationship
+                    
+                    Entities:
+                    {entities_text}
+                    
+                    Return only the JSON array, no additional text."""
+                }
+            ],
+            temperature=0.3,
+            max_tokens=1000
+        )
+        
+        # Extract the JSON from the response
+        response_text = response.choices[0].message.content
+        try:
+            # Try to find JSON in the response
+            json_start = response_text.find('[')
+            json_end = response_text.rfind(']') + 1
+            if json_start >= 0 and json_end > json_start:
+                relationships = json.loads(response_text[json_start:json_end])
+                print(f"Found {len(relationships)} relationships")
+                return relationships
+        except json.JSONDecodeError as e:
+            print(f"Error parsing relationships JSON: {e}")
+            return []
+            
+    except Exception as e:
+        print(f"Error extracting relationships with OpenAI API: {e}")
+        return []
+
 async def process_and_combine_files(audio_path: str = None, document_path: str = None) -> str:
     """
     Process audio and document files, then combine their text.
@@ -224,12 +281,49 @@ async def process_and_combine_files(audio_path: str = None, document_path: str =
     # Extract entities and concepts
     try:
         entities = await extract_entities_and_concepts(final_text)
-        # Save entities to a separate JSON file in the entities directory
+        
+        # First save the entities file
         entities_file = entities_dir / f"entities_{unique_id}.json"
         with open(entities_file, "w", encoding="utf-8") as f:
             json.dump(entities, f, indent=2, ensure_ascii=False)
-        print(f"Entities and concepts saved to: {entities_file}")
+        print(f"Entities saved to: {entities_file}")
+        
+        # Extract relationships using OpenAI API
+        relationships = await extract_relationships(entities)
+        unique_nodes = set()
+        for edge in relationships:
+            unique_nodes.add(edge['source'])
+            unique_nodes.add(edge['target'])
+        
+        # Create node-to-id mapping
+        node_to_id = {node: str(idx + 1) for idx, node in enumerate(unique_nodes)}
+        
+        # Save node-to-id mapping
+        node_mapping_file = entities_dir / f"node_mapping_{unique_id}.json"
+        with open(node_mapping_file, "w", encoding="utf-8") as f:
+            json.dump(node_to_id, f, indent=2, ensure_ascii=False)
+        print(f"Node mapping saved to: {node_mapping_file}")
+        
+        # Format edges with numeric IDs
+        formatted_edges = []
+        for edge in relationships:
+            source_id = node_to_id[edge['source']]
+            target_id = node_to_id[edge['target']]
+            edge_id = f"{source_id}-{target_id}"
+            formatted_edges.append({
+                "source": source_id,
+                "target": target_id,
+                "id": edge_id,
+                "label": edge['relation']
+            })
+        
+        # Save relationships to a separate file
+        relationships_file = entities_dir / f"relationships_{unique_id}.json"
+        with open(relationships_file, "w", encoding="utf-8") as f:
+            json.dump(formatted_edges, f, indent=2, ensure_ascii=False)
+        print(f"Relationships saved to: {relationships_file}")
+        
     except Exception as e:
-        print(f"Error extracting entities and concepts: {e}")
+        print(f"Error extracting entities and relationships: {e}")
     
     return str(output_file) 

@@ -1,0 +1,98 @@
+[
+  {
+    "source": "Dr. Alex Kalynychenko",
+    "target": "University of Toronto Mississauga",
+    "relation": "is a lecturer at",
+    "description": "Dr. Alex Kalynychenko teaches at the University of Toronto Mississauga."
+  },
+  {
+    "source": "Dr. Alex Kalynychenko",
+    "target": "Spatial Analysis",
+    "relation": "gives a lecture on",
+    "description": "Dr. Alex Kalynychenko is delivering a lecture focused on Spatial Analysis."
+  },
+  {
+    "source": "Spatial Analysis",
+    "target": "ESRI",
+    "relation": "uses materials from",
+    "description": "Spatial Analysis incorporates materials and demonstrations provided by ESRI."
+  },
+  {
+    "source": "Carl Steinitz",
+    "target": "Geodesign",
+    "relation": "developed",
+    "description": "Carl Steinitz is the creator of the Geodesign process."
+  },
+  {
+    "source": "Longley et al. (2015)",
+    "target": "Spatial Analysis",
+    "relation": "provides information on",
+    "description": "Longley et al. (2015) is a source of information related to Spatial Analysis."
+  },
+  {
+    "source": "ArcGIS Pro",
+    "target": "3D Analyst",
+    "relation": "includes",
+    "description": "3D Analyst is an extension of ArcGIS Pro designed for spatial analysis."
+  },
+  {
+    "source": "Machine learning and AI",
+    "target": "Spatial Analysis",
+    "relation": "is used in",
+    "description": "Machine learning and AI technologies are applied in the context of Spatial Analysis."
+  },
+  {
+    "source": "Deep learning",
+    "target": "Machine learning and AI",
+    "relation": "is a subset of",
+    "description": "Deep learning is a specific type of machine learning technique."
+  },
+  {
+    "source": "Big data analytics",
+    "target": "Spatial Analysis",
+    "relation": "is a process within",
+    "description": "Big data analytics is a method used to analyze large datasets in Spatial Analysis."
+  },
+  {
+    "source": "Python",
+    "target": "Modeling and scripting",
+    "relation": "is used for",
+    "description": "Python is often utilized for modeling and scripting in data analysis."
+  },
+  {
+    "source": "U. S. Bureau of the Census",
+    "target": "2015",
+    "relation": "conducted census in",
+    "description": "The U. S. Bureau of the Census conducted the census in the year 2015."
+  },
+  {
+    "source": "Santa Ana River",
+    "target": "Pacific",
+    "relation": "empties into",
+    "description": "The Santa Ana River flows into the Pacific Ocean."
+  },
+  {
+    "source": "Santa Ana River",
+    "target": "Seal Beach",
+    "relation": "flows near",
+    "description": "The Santa Ana River flows out of a gorge and near Seal Beach."
+  },
+  {
+    "source": "Quiz 4",
+    "target": "Quercus",
+    "relation": "is administered via",
+    "description": "Quiz 4 will be administered through the Quercus platform."
+  },
+  {
+    "source": "Lab 3",
+    "target": "Thursday, March 13, 2025",
+    "relation": "is scheduled on",
+    "description": "Lab 3 is planned to take place on March 13, 2025."
+  },
+  {
+    "source": "Week 9&10 Spatial Analysis I&II",
+    "target": "Quiz 4",
+    "relation": "is covered in",
+    "description": "The materials from Week 9&10 Spatial Analysis I&II will be included in Quiz 4."
+  }
+]
