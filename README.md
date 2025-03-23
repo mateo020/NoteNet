@@ -88,9 +88,9 @@ Experience the core functionalities of NoteNet:
 ## Meet Our Team
 Three passionate University of Toronto students committed to democratizing education through technology:
 
-- **[Team Member 1]**: AI & NLP Specialist
-- **[Team Member 2]**: Full-stack Developer
-- **[Team Member 3]**: UX/UI Designer & Accessibility Expert
+- **Mohamed Tarek**: AI & NLP Specialist
+- **Mateo Arcos**: UX/UI Designer
+- **Japleen Kaur**: Full-stack Developer
 
 ---
 
