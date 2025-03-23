@@ -1,68 +1,62 @@
 [
   {
-    "source": "4",
-    "target": "11",
-    "id": "4-11",
-    "label": "works at"
-  },
-  {
-    "source": "4",
-    "target": "8",
-    "id": "4-8",
-    "label": "lectures on"
+    "source": "3",
+    "target": "9",
+    "id": "3-9",
+    "label": "teaches at"
   },
   {
     "source": "3",
+    "target": "16",
+    "id": "3-16",
+    "label": "works in"
+  },
+  {
+    "source": "3",
+    "target": "14",
+    "id": "3-14",
+    "label": "teaches"
+  },
+  {
+    "source": "1",
+    "target": "10",
+    "id": "1-10",
+    "label": "develops"
+  },
+  {
+    "source": "12",
     "target": "4",
-    "id": "3-4",
-    "label": "is taught by"
+    "id": "12-4",
+    "label": "includes"
   },
   {
     "source": "7",
     "target": "8",
     "id": "7-8",
-    "label": "provides tools for"
-  },
-  {
-    "source": "6",
-    "target": "7",
-    "id": "6-7",
-    "label": "is provided by"
-  },
-  {
-    "source": "9",
-    "target": "17",
-    "id": "9-17",
-    "label": "is a part of"
-  },
-  {
-    "source": "13",
-    "target": "5",
-    "id": "13-5",
-    "label": "was transformed from"
-  },
-  {
-    "source": "18",
-    "target": "14",
-    "id": "18-14",
-    "label": "is a practice in"
-  },
-  {
-    "source": "1",
-    "target": "2",
-    "id": "1-2",
-    "label": "empties into"
-  },
-  {
-    "source": "10",
-    "target": "12",
-    "id": "10-12",
-    "label": "covers"
+    "label": "used with"
   },
   {
     "source": "15",
-    "target": "16",
-    "id": "15-16",
+    "target": "17",
+    "id": "15-17",
+    "label": "transformed into"
+  },
+  {
+    "source": "5",
+    "target": "6",
+    "id": "5-6",
+    "label": "empties into"
+  },
+  {
+    "source": "2",
+    "target": "13",
+    "id": "2-13",
+    "label": "administered via"
+  },
+  {
+    "source": "18",
+    "target": "11",
+    "id": "18-11",
     "label": "takes place on"
   }
 ]

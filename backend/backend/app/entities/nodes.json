@@ -1,74 +1,74 @@
 [
   {
     "id": "1",
-    "label": "Santa Ana River"
-  },
-  {
-    "id": "2",
-    "label": "Newport Beach"
-  },
-  {
-    "id": "3",
-    "label": "GGR 321 H5S"
-  },
-  {
-    "id": "4",
-    "label": "Dr. Alex Kalynychenko"
-  },
-  {
-    "id": "5",
-    "label": "23rd Congressional District"
-  },
-  {
-    "id": "6",
-    "label": "ArcGIS Pro extensions"
-  },
-  {
-    "id": "7",
     "label": "ESRI"
   },
   {
-    "id": "8",
-    "label": "Spatial Analysis"
-  },
-  {
-    "id": "9",
-    "label": "Python scripts"
-  },
-  {
-    "id": "10",
+    "id": "2",
     "label": "Quiz 4"
   },
   {
-    "id": "11",
+    "id": "3",
+    "label": "Dr. Alex Kalynychenko"
+  },
+  {
+    "id": "4",
+    "label": "Deep learning"
+  },
+  {
+    "id": "5",
+    "label": "Santa Ana River"
+  },
+  {
+    "id": "6",
+    "label": "Newport Beach"
+  },
+  {
+    "id": "7",
+    "label": "Python"
+  },
+  {
+    "id": "8",
+    "label": "ModelBuilder"
+  },
+  {
+    "id": "9",
     "label": "University of Toronto Mississauga"
   },
   {
-    "id": "12",
-    "label": "Week 9&10 Spatial Analysis I&II"
+    "id": "10",
+    "label": "ArcGIS Pro extensions"
   },
   {
-    "id": "13",
-    "label": "24th District"
-  },
-  {
-    "id": "14",
-    "label": "Redistricting"
-  },
-  {
-    "id": "15",
-    "label": "Lab 3"
-  },
-  {
-    "id": "16",
+    "id": "11",
     "label": "Thursday, March 13, 2025"
   },
   {
+    "id": "12",
+    "label": "Machine learning"
+  },
+  {
+    "id": "13",
+    "label": "Quercus"
+  },
+  {
+    "id": "14",
+    "label": "GGR 321 H5S"
+  },
+  {
+    "id": "15",
+    "label": "23rd Congressional District"
+  },
+  {
+    "id": "16",
+    "label": "Department of Geography, Geomatics and Environment"
+  },
+  {
     "id": "17",
-    "label": "Modeling and scripting"
+    "label": "24th District"
   },
   {
     "id": "18",
-    "label": "Gerrymandering"
+    "label": "Lab 3"
   }
 ]

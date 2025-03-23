@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { Graph } from './components/Graph';
 import './App.css';
 
-function App() {
+function UploadForm() {
   const [audioFile, setAudioFile] = useState<File | null>(null);
   const [documentFile, setDocumentFile] = useState<File | null>(null);
   const [uploadStatus, setUploadStatus] = useState<string>('');
   const [isUploading, setIsUploading] = useState(false);
+  const [showGraph, setShowGraph] = useState(false);
+  const navigate = useNavigate();
 
   const handleAudioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -35,6 +39,7 @@ function App() {
     event.preventDefault();
     setIsUploading(true);
     setUploadStatus('');
+    setShowGraph(false);
 
     try {
       if (audioFile) {
@@ -65,9 +70,11 @@ function App() {
         }
       }
 
-      setUploadStatus('Files uploaded successfully!');
-      setAudioFile(null);
-      setDocumentFile(null);
+      setUploadStatus('Files uploaded successfully! Processing...');
+      // Wait a moment for the backend to process the files
+      setTimeout(() => {
+        setShowGraph(true);
+      }, 2000);
     } catch (error) {
       setUploadStatus('Error uploading files. Please try again.');
       console.error('Upload error:', error);
@@ -122,12 +129,26 @@ function App() {
           </p>
         )}
       </form>
+
+      {showGraph && (
+        <div className="graph-section">
+          <h2>Knowledge Graph</h2>
+          <Graph />
+        </div>
+      )}
     </div>
   );
 }
 
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<UploadForm />} />
+        <Route path="/graph" element={<Graph />} />
+      </Routes>
+    </Router>
+  );
+}
+
 export default App;
-
-
-
-

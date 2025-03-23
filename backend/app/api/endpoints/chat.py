@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, UploadFile, File, Form
-from typing import Optional
+from typing import Optional, Dict, List
 import os
 from pathlib import Path
 from .process_files import process_and_combine_files
@@ -133,3 +133,39 @@ async def get_latest_entities():
             status_code=500,
             detail=f"Error reading files: {str(e)}"
         )
+
+@router.get("/latest_entities/nodes")
+async def get_latest_nodes():
+    """Get the latest nodes file."""
+    entities_dir = Path("backend/app/entities")
+    if not entities_dir.exists():
+        raise HTTPException(status_code=404, detail="Entities directory not found")
+    
+    nodes_file = entities_dir / "nodes.json"
+    if not nodes_file.exists():
+        raise HTTPException(status_code=404, detail="No nodes file found")
+    
+    try:
+        with open(nodes_file, 'r', encoding='utf-8') as f:
+            nodes = json.load(f)
+        return nodes
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error reading nodes file: {str(e)}")
+
+@router.get("/latest_entities/relationships")
+async def get_latest_relationships():
+    """Get the latest relationships file."""
+    entities_dir = Path("backend/app/entities")
+    if not entities_dir.exists():
+        raise HTTPException(status_code=404, detail="Entities directory not found")
+    
+    relationships_file = entities_dir / "relationships.json"
+    if not relationships_file.exists():
+        raise HTTPException(status_code=404, detail="No relationships file found")
+    
+    try:
+        with open(relationships_file, 'r', encoding='utf-8') as f:
+            relationships = json.load(f)
+        return relationships
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error reading relationships file: {str(e)}")
