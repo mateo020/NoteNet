@@ -304,28 +304,15 @@ async def process_and_combine_files(audio_path: str = None, document_path: str =
         
         # Extract relationships using OpenAI API
         relationships = await extract_relationships(entities)
-        if not relationships:
-            print("Warning: No relationships were extracted")
-            return str(output_file)
-            
-        unique_nodes = set()
-        for edge in relationships:
-            unique_nodes.add(edge['source'])
-            unique_nodes.add(edge['target'])
         
-        if not unique_nodes:
-            print("Warning: No unique nodes found in relationships")
-            return str(output_file)
-            
-        print(f"Found {len(unique_nodes)} unique nodes")  # Debug log
+        # Create nodes from all entities first
+        all_nodes = list(entities.keys())
+        node_to_id = {node: str(idx + 1) for idx, node in enumerate(all_nodes)}
         
-        # Create node-to-id mapping
-        node_to_id = {node: str(idx + 1) for idx, node in enumerate(unique_nodes)}
-        
-        # Create nodes array in the specified format with entity names as labels
+        # Create nodes array with all entities
         nodes = [
             {"id": node_to_id[node], "label": node}
-            for node in unique_nodes
+            for node in all_nodes
         ]
         
         # Save nodes file
@@ -334,6 +321,15 @@ async def process_and_combine_files(audio_path: str = None, document_path: str =
             json.dump(nodes, f, indent=2, ensure_ascii=False)
         print(f"Nodes saved to: {nodes_file}")
         
+        if not relationships:
+            print("Warning: No relationships were extracted")
+            # Save empty relationships file
+            relationships_file = entities_dir / f"relationships.json"
+            with open(relationships_file, "w", encoding="utf-8") as f:
+                json.dump([], f, indent=2, ensure_ascii=False)
+            print(f"Empty relationships saved to: {relationships_file}")
+            return str(output_file)
+            
         # Format edges with numeric IDs
         formatted_edges = []
         for edge in relationships:

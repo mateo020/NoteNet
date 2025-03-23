@@ -1,0 +1,42 @@
+.node-details {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  min-width: 250px;
+  z-index: 1000;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #666;
+  padding: 5px;
+  line-height: 1;
+}
+
+.close-button:hover {
+  color: #333;
+}
+
+.details-content {
+  margin-top: 15px;
+}
+
+.details-content p {
+  margin: 8px 0;
+  color: #333;
+}
+
+.details-content strong {
+  color: #666;
+  margin-right: 8px;
+} 

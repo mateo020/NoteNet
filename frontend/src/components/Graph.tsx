@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ForceGraph2D from 'react-force-graph-2d';
+import { NodeDetails } from './NodeDetails';
 import './Graph.css';
 
 interface Node {
@@ -18,6 +19,7 @@ export const Graph: React.FC = () => {
   const [nodes, setNodes] = useState<Node[]>([]);
   const [edges, setEdges] = useState<Edge[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [selectedNode, setSelectedNode] = useState<Node | null>(null);
 
   useEffect(() => {
     const fetchGraphData = async () => {
@@ -43,6 +45,10 @@ export const Graph: React.FC = () => {
 
     fetchGraphData();
   }, []);
+
+  const handleNodeClick = (node: Node) => {
+    setSelectedNode(node);
+  };
 
   if (error) {
     return <div className="error-message">Error: {error}</div>;
@@ -71,7 +77,14 @@ export const Graph: React.FC = () => {
           linkCurvature={0.25}
           linkDirectionalParticles={2}
           linkDirectionalParticleSpeed={0.004}
+          onNodeClick={handleNodeClick}
         />
+        {selectedNode && (
+          <NodeDetails
+            node={selectedNode}
+            onClose={() => setSelectedNode(null)}
+          />
+        )}
       </div>
       <div className="graph-legend">
         <p>Nodes: {nodes.length}</p>
