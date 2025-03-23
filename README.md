@@ -58,15 +58,6 @@ NoteNet is a powerful web application designed to address these challenges by:
 
 ---
 
-## Real User Testimonials
-
-> "NoteNet helped me understand complex biochemistry pathways that I struggled with for weeks. I got an A on my final exam!"  
-> — **Priya S., University of Toronto**
-
-> "As a dyslexic student, seeing the connections visually changed everything for me. Now I can focus on understanding, not just reading."  
-> — **Marcus T., Computer Science Major**
-
----
 
 ## Target Audience
 - Students at all educational levels seeking better learning tools.
