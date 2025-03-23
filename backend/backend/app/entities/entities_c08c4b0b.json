@@ -1,0 +1,9 @@
+{
+  "Audio Transcription": "The process of converting spoken language into written text.",
+  "Stack Abstract Datatype": "A simple data structure that contains zero or more items. Items are added or removed from the top of the stack.",
+  "Item": "An object or data that can be added or removed from the stack.",
+  "Top of the Stack": "The location where items are added or removed in a stack datatype.",
+  "Pushing to the Stack": "The process of adding an item to the top of the stack.",
+  "Popping from the Stack": "The process of removing an item from the top of the stack.",
+  "Last In First Out": "A method of processing data where the most recently added item is the first one to be removed, commonly used in stack datatype."
+}

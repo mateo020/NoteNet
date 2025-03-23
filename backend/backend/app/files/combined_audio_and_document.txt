@@ -1,3 +1,8 @@
+=== Audio Transcription ===
+
+The stack abstract datatype is very simple, a stack contains 0 or more items. When you add an item, it goes to the top of the stack. We call this pushing to the stack. When you remove an item, this is called popping from the stack. It is removed also from the top. We call this last in first out.
+
+
 === Document Text ===
 
 6.1 Introduction to Linked ListsContentsThe concept of “links”A LinkedList classExample: building linksLinked list diagramsWe have seen that Python lists are an array-based implementation of the list ADT and thatthey have some drawbacks: inserting and deleting items in a list can require shifting manyelements in the program’s memory. For example, we saw that inserting and deleting at thefront of a built-in list takes time proportional to the length of the list, because every item inthe list needs to be shifted by one spot.This week, we’re going to study a completely different implementation of the List ADT thatwill attempt to address this efficiency shortcoming. To do so, we’ll use a new datastructure called the linked list. Our goal will be to create a new Python class that behavesexactly the same as the built-in list class, changing only what goes on in the privateimplementation of the class. This will mean that, ultimately, code such as this:will work whether nums is a Python list or an instance of the class we are going towrite. We’ll even learn how to make list indexing such as nums[3] = 'spider' work oninstances of our class!for i in range(n):    nums.append(i)print(nums)

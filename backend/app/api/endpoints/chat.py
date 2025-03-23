@@ -18,63 +18,81 @@ router = APIRouter()
 #     return {"message": "GET /api is alive!"}
 
 @router.post("/upload_file")
-async def upload_file(file: UploadFile = File(...)):
+async def upload_file(files: List[UploadFile] = File(...)):
     # Define allowed file types
-    allowed_audio_types = ["audio/mpeg", "audio/wav", "audio/ogg", "audio/mp3"]
+    allowed_audio_types = ["audio/mpeg", "audio/wav", "audio/ogg", "audio/mp3", "audio/x-m4a", "audio/m4a"]
     allowed_pdf_types = ["application/pdf"]
     allowed_image_types = ["image/jpeg", "image/png", "image/gif", "image/webp"]
-    
-    # Check file type
-    content_type = file.content_type
-    
-    if content_type not in allowed_audio_types + allowed_pdf_types + allowed_image_types:
-        raise HTTPException(
-            status_code=400,
-            detail="File type not allowed. Please upload an audio file, PDF, or image."
-        )
     
     # Create uploads directory if it doesn't exist
     upload_dir = Path("uploads")
     upload_dir.mkdir(exist_ok=True)
     
-    # Generate a unique filename
-    file_extension = os.path.splitext(file.filename)[1]
-    unique_filename = f"{file.filename}"
+    audio_path = None
+    document_path = None
     
-    # Save the file
-    file_path = upload_dir / unique_filename
     try:
-        contents = await file.read()
+        print("\n=== File Upload Debug ===")
+        print(f"Processing {len(files)} files")
         
-        with open(file_path, "wb") as f:
-            f.write(contents)
-        
-        # Process the file based on its type
-        try:
-            print("\n=== File Upload Debug ===")
-            print(f"Processing file: {unique_filename}")
+        for file in files:
+            content_type = file.content_type
+            print(f"\nProcessing file: {file.filename}")
             print(f"Content type: {content_type}")
             
+            if content_type not in allowed_audio_types + allowed_pdf_types + allowed_image_types:
+                print(f"❌ Unsupported file type: {content_type}")
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"File type not allowed. Please upload an audio file (MP3, WAV, OGG, M4A), PDF, or image."
+                )
+            
+            # Save the file
+            file_path = upload_dir / file.filename
+            contents = await file.read()
+            
+            with open(file_path, "wb") as f:
+                f.write(contents)
+            
+            # Determine file type and store path
             if content_type in allowed_audio_types:
-                print("Processing as audio file...")
-                combined_file = await process_and_combine_files(audio_path=str(file_path))
-                file_type = "audio"
+                if audio_path:
+                    raise HTTPException(
+                        status_code=400,
+                        detail="Only one audio file can be uploaded at a time"
+                    )
+                audio_path = str(file_path)
+                print("✅ Audio file saved")
             else:
-                print("Processing as document file...")
-                combined_file = await process_and_combine_files(document_path=str(file_path))
-                file_type = "document"
-                
-            print(f"File processed successfully as {file_type}")
+                if document_path:
+                    raise HTTPException(
+                        status_code=400,
+                        detail="Only one document file can be uploaded at a time"
+                    )
+                document_path = str(file_path)
+                print("✅ Document file saved")
+        
+        # Process the files
+        try:
+            print("\nProcessing files...")
+            combined_file = await process_and_combine_files(
+                audio_path=audio_path,
+                document_path=document_path
+            )
+            
+            print(f"✅ Files processed successfully")
             print(f"Combined file path: {combined_file}")
             print("=== End File Upload Debug ===\n")
             
             return {
-                "message": f"{file_type.capitalize()} file processed successfully",
-                "filename": unique_filename,
-                "content_type": content_type,
-                "file_path": str(file_path),
+                "message": "Files processed successfully",
+                "files": [
+                    {"filename": os.path.basename(path), "type": "audio" if path == audio_path else "document"}
+                    for path in [audio_path, document_path] if path
+                ],
                 "output_file": combined_file
             }
+            
         except ValueError as ve:
             print(f"❌ ValueError during file processing: {str(ve)}")
             raise HTTPException(
@@ -82,23 +100,25 @@ async def upload_file(file: UploadFile = File(...)):
                 detail=str(ve)
             )
         except Exception as e:
-            print(f"❌ Error processing file: {str(e)}")
+            print(f"❌ Error processing files: {str(e)}")
             import traceback
             print(f"Traceback: {traceback.format_exc()}")
             raise HTTPException(
                 status_code=500,
-                detail=f"Error processing file: {str(e)}"
+                detail=f"Error processing files: {str(e)}"
             )
+            
     except Exception as e:
-        # Clean up the uploaded file if processing failed
-        if file_path.exists():
-            file_path.unlink()
-        print(f"❌ Error handling file: {str(e)}")
+        # Clean up any uploaded files if processing failed
+        for path in [audio_path, document_path]:
+            if path and os.path.exists(path):
+                os.remove(path)
+        print(f"❌ Error handling files: {str(e)}")
         import traceback
         print(f"Traceback: {traceback.format_exc()}")
         raise HTTPException(
             status_code=500,
-            detail=f"An error occurred while handling the file: {str(e)}"
+            detail=f"An error occurred while handling the files: {str(e)}"
         )
 
 @router.get("/latest_entities")

@@ -18,7 +18,7 @@ function UploadForm() {
         setAudioFile(file);
         setUploadStatus('');
       } else {
-        setUploadStatus('Please select a valid audio file (MP3, WAV, OGG)');
+        setUploadStatus('Please select a valid audio file (MP3, WAV, OGG, M4A)');
       }
     }
   };
@@ -42,41 +42,34 @@ function UploadForm() {
     setShowGraph(false);
 
     try {
+      const formData = new FormData();
+      
       if (audioFile) {
-        const audioFormData = new FormData();
-        audioFormData.append('file', audioFile);
-        
-        const audioResponse = await fetch('http://localhost:8000/api/upload_file', {
-          method: 'POST',
-          body: audioFormData,
-        });
-
-        if (!audioResponse.ok) {
-          throw new Error('Audio upload failed');
-        }
+        formData.append('files', audioFile);
       }
-
       if (documentFile) {
-        const documentFormData = new FormData();
-        documentFormData.append('file', documentFile);
-        
-        const documentResponse = await fetch('http://localhost:8000/api/upload_file', {
-          method: 'POST',
-          body: documentFormData,
-        });
+        formData.append('files', documentFile);
+      }
+      
+      const response = await fetch('http://localhost:8000/api/upload_file', {
+        method: 'POST',
+        body: formData,
+      });
 
-        if (!documentResponse.ok) {
-          throw new Error('Document upload failed');
-        }
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Upload failed');
       }
 
-      setUploadStatus('Files uploaded successfully! Processing...');
+      const data = await response.json();
+      setUploadStatus('Files uploaded and processed successfully!');
+      
       // Wait a moment for the backend to process the files
       setTimeout(() => {
         setShowGraph(true);
       }, 2000);
     } catch (error) {
-      setUploadStatus('Error uploading files. Please try again.');
+      setUploadStatus(`Error: ${error instanceof Error ? error.message : 'Upload failed'}`);
       console.error('Upload error:', error);
     } finally {
       setIsUploading(false);

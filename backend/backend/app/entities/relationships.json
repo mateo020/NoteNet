@@ -3,102 +3,78 @@
     "source": "1",
     "target": "2",
     "id": "1-2",
-    "label": "teaches at"
+    "label": "uses"
   },
   {
     "source": "1",
     "target": "3",
     "id": "1-3",
-    "label": "is based in"
+    "label": "uses"
   },
   {
     "source": "1",
     "target": "4",
     "id": "1-4",
-    "label": "lectures on"
-  },
-  {
-    "source": "1",
-    "target": "5",
-    "id": "1-5",
-    "label": "teaches"
-  },
-  {
-    "source": "6",
-    "target": "5",
-    "id": "6-5",
-    "label": "provides content for"
-  },
-  {
-    "source": "6",
-    "target": "8",
-    "id": "6-8",
-    "label": "supplies"
+    "label": "follows"
   },
   {
     "source": "8",
-    "target": "4",
-    "id": "8-4",
-    "label": "is used for"
+    "target": "7",
+    "id": "8-7",
+    "label": "contains"
   },
   {
-    "source": "9",
-    "target": "4",
-    "id": "9-4",
-    "label": "is discussed in the context of"
-  },
-  {
-    "source": "10",
-    "target": "4",
-    "id": "10-4",
-    "label": "is discussed in the context of"
+    "source": "8",
+    "target": "6",
+    "id": "8-6",
+    "label": "alternative to"
   },
   {
     "source": "11",
-    "target": "4",
-    "id": "11-4",
-    "label": "is discussed in the context of"
+    "target": "9",
+    "id": "11-9",
+    "label": "is a"
   },
   {
-    "source": "12",
-    "target": "4",
-    "id": "12-4",
-    "label": "is discussed in the context of"
+    "source": "11",
+    "target": "15",
+    "id": "11-15",
+    "label": "contains"
   },
   {
-    "source": "13",
-    "target": "8",
-    "id": "13-8",
-    "label": "are added to"
+    "source": "11",
+    "target": "12",
+    "id": "11-12",
+    "label": "can reference"
   },
   {
     "source": "14",
-    "target": "15",
-    "id": "14-15",
-    "label": "is used in"
+    "target": "11",
+    "id": "14-11",
+    "label": "instances of"
   },
   {
-    "source": "18",
-    "target": "19",
-    "id": "18-19",
-    "label": "is used in"
+    "source": "16",
+    "target": "8",
+    "id": "16-8",
+    "label": "instance of"
   },
   {
-    "source": "61",
-    "target": "62",
-    "id": "61-62",
-    "label": "is administered via"
+    "source": "17",
+    "target": "13",
+    "id": "17-13",
+    "label": "represents"
   },
   {
-    "source": "63",
-    "target": "64",
-    "id": "63-64",
+    "source": "11",
+    "target": "10",
+    "id": "11-10",
     "label": "has"
   },
   {
-    "source": "65",
-    "target": "66",
-    "id": "65-66",
-    "label": "is scheduled on"
+    "source": "11",
+    "target": "18",
+    "id": "11-18",
+    "label": "is a"
   }
 ]

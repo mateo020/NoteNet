@@ -1,0 +1,21 @@
+{
+  "Linked Lists": "A data structure that attempts to address efficiency shortcomings of array-based list implementation in Python. It does not require elements to be stored in contiguous memory slots, instead, each element (node) contains a reference to the next element in the list.",
+  "Python lists": "An array-based implementation of the list Abstract Data Type (ADT) in Python. Inserting and deleting items can require shifting many elements in the program's memory, which can be inefficient for large lists.",
+  "List ADT": "Abstract Data Type (ADT) representing a list. It is a conceptual model for data types where the data and their behaviors are defined.",
+  "LinkedList class": "A class in Python that represents the linked list itself. It implements methods that obey the same interface as the built-in list class in Python.",
+  "_Node": "A class representing a single element of a list in the context of linked lists. Each instance of _Node represents an element and a reference to the next element in the list.",
+  "nums": "A variable that can either be a Python list or an instance of a custom class that implements linked list.",
+  "links": "In the context of linked lists, links are references stored along with each element pointing to the next element in the list.",
+  "contiguous slots in memory": "In the context of Python lists, it refers to the sequential storage of elements in the computer's memory.",
+  "private class": "A class that is not intended to be accessed directly by client code. In the provided code, the _Node class is private, indicated by the preceding underscore.",
+  "client code": "The code that makes use of a module or class.",
+  "node1": "A _Node object containing the number 10. It is an element in a linked list.",
+  "node1.item": "The number 10, which is the value contained within the _Node object named node1.",
+  "node2": "A _Node object containing the number 20. It is an element in a linked list.",
+  "node3": "A _Node object containing the number 30. It is an element in a linked list.",
+  "linked lists": "A data structure in which each element is a _Node object. These elements are connected in a sequence, with each node referencing the next node in the list.",
+  "_Node object": "A type of object used in linked lists. Each _Node object contains a value (referred to as 'item') and a reference to the next _Node object in the list.",
+  "linky": "A LinkedList object, which is a type of linked list. In the provided code, it is initially empty, but eventually contains the nodes node1, node2, and node3.",
+  "LinkedList()": "A class or type of object used to create linked lists. In the provided code, an instance of LinkedList() named 'linky' is created.",
+  "memory model diagrams": "Visual representations used to understand the memory allocation and connections between different elements in data structures like linked lists."
+}

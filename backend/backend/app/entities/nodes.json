@@ -1,266 +1,74 @@
 [
   {
     "id": "1",
-    "label": "Dr. Alex Kalynychenko"
+    "label": "Stack Abstract Datatype"
   },
   {
     "id": "2",
-    "label": "University of Toronto Mississauga"
+    "label": "Pushing to the Stack"
   },
   {
     "id": "3",
-    "label": "Department of Geography, Geomatics and Environment"
+    "label": "Popping from the Stack"
   },
   {
     "id": "4",
-    "label": "Spatial Analysis"
+    "label": "Last in First Out"
   },
   {
     "id": "5",
-    "label": "GGR 321 H5S"
+    "label": "Linked Lists"
   },
   {
     "id": "6",
-    "label": "ESRI"
+    "label": "Python List"
   },
   {
     "id": "7",
-    "label": "Carl Steinitz"
+    "label": "Node"
   },
   {
     "id": "8",
-    "label": "ArcGIS Pro"
+    "label": "LinkedList Class"
   },
   {
     "id": "9",
-    "label": "Machine Learning"
+    "label": "Private Class"
   },
   {
     "id": "10",
-    "label": "AI"
+    "label": "Private Attributes"
   },
   {
     "id": "11",
-    "label": "Deep Learning"
+    "label": "_Node"
   },
   {
     "id": "12",
-    "label": "Big Data Analytics"
+    "label": "None"
   },
   {
     "id": "13",
-    "label": "ArcGIS Pro Extensions"
+    "label": "linked list"
   },
   {
     "id": "14",
-    "label": "Spark"
+    "label": "node1, node2, node3"
   },
   {
     "id": "15",
-    "label": "GeoAnalytics Desktop Toolbox"
+    "label": "item"
   },
   {
     "id": "16",
-    "label": "Raster Analysis Toolbox"
+    "label": "linky"
   },
   {
     "id": "17",
-    "label": "ESRI 2024"
+    "label": "memory model diagrams"
   },
   {
     "id": "18",
-    "label": "Python"
-  },
-  {
-    "id": "19",
-    "label": "ModelBuilder"
-  },
-  {
-    "id": "20",
-    "label": "Zandbergen 2024"
-  },
-  {
-    "id": "21",
-    "label": "Area-Based Analyses"
-  },
-  {
-    "id": "22",
-    "label": "Polygon"
-  },
-  {
-    "id": "23",
-    "label": "Longley et al. (2015)"
-  },
-  {
-    "id": "24",
-    "label": "Gerrymandering"
-  },
-  {
-    "id": "25",
-    "label": "23rd Congressional District"
-  },
-  {
-    "id": "26",
-    "label": "24th District"
-  },
-  {
-    "id": "27",
-    "label": "Centrality"
-  },
-  {
-    "id": "28",
-    "label": "Mean"
-  },
-  {
-    "id": "29",
-    "label": "Median"
-  },
-  {
-    "id": "30",
-    "label": "Mode"
-  },
-  {
-    "id": "31",
-    "label": "Centroid"
-  },
-  {
-    "id": "32",
-    "label": "U. S. Bureau of the Census"
-  },
-  {
-    "id": "33",
-    "label": "Standard Deviation"
-  },
-  {
-    "id": "34",
-    "label": "Variance"
-  },
-  {
-    "id": "35",
-    "label": "RMSE"
-  },
-  {
-    "id": "36",
-    "label": "Analysis of Surfaces"
-  },
-  {
-    "id": "37",
-    "label": "DEM"
-  },
-  {
-    "id": "38",
-    "label": "2015"
-  },
-  {
-    "id": "39",
-    "label": "https://www.travelassociates.com/"
-  },
-  {
-    "id": "40",
-    "label": "Orange County DEM"
-  },
-  {
-    "id": "41",
-    "label": "river channels"
-  },
-  {
-    "id": "42",
-    "label": "Santa Ana River"
-  },
-  {
-    "id": "43",
-    "label": "gorge"
-  },
-  {
-    "id": "44",
-    "label": "Pacific"
-  },
-  {
-    "id": "45",
-    "label": "Seal Beach"
-  },
-  {
-    "id": "46",
-    "label": "Newport Beach"
-  },
-  {
-    "id": "47",
-    "label": "geodesign process"
-  },
-  {
-    "id": "48",
-    "label": "location-allocation problems"
-  },
-  {
-    "id": "49",
-    "label": "p-median problem"
-  },
-  {
-    "id": "50",
-    "label": "coverage problem"
-  },
-  {
-    "id": "51",
-    "label": "Hakimi’s theorem"
-  },
-  {
-    "id": "52",
-    "label": "routing problems"
-  },
-  {
-    "id": "53",
-    "label": "shortest-path problem"
-  },
-  {
-    "id": "54",
-    "label": "traveling-salesman problem (TSP)"
-  },
-  {
-    "id": "55",
-    "label": "orienteering problem"
-  },
-  {
-    "id": "56",
-    "label": "Sears"
-  },
-  {
-    "id": "57",
-    "label": "hypothesis testing"
-  },
-  {
-    "id": "58",
-    "label": "randomization tests"
-  },
-  {
-    "id": "59",
-    "label": "Santa Barbara"
-  },
-  {
-    "id": "60",
-    "label": "route"
-  },
-  {
-    "id": "61",
-    "label": "Quiz 4"
-  },
-  {
-    "id": "62",
-    "label": "Quercus"
-  },
-  {
-    "id": "63",
-    "label": "Week 9&10 Spatial Analysis I&II"
-  },
-  {
-    "id": "64",
-    "label": "recommended readings"
-  },
-  {
-    "id": "65",
-    "label": "lab 3"
-  },
-  {
-    "id": "66",
-    "label": "Thursday, March 13, 2025"
+    "label": "private class"
   }
 ]

@@ -1,0 +1,20 @@
+{
+  "Stack Abstract Datatype": "A simple data structure that contains 0 or more items. Items are added (pushed) and removed (popped) from the top of the stack, following a last in, first out (LIFO) principle.",
+  "Pushing to the Stack": "The process of adding an item to the top of the stack in a stack abstract datatype.",
+  "Popping from the Stack": "The process of removing an item from the top of the stack in a stack abstract datatype.",
+  "Last in First Out": "A principle of data structures like stacks, where the most recently added (last in) item is the first one to be removed (first out).",
+  "Linked Lists": "A data structure that addresses efficiency shortcomings of array-based implementations like Python lists. Elements in a linked list are not stored in contiguous slots in memory, but each element (node) contains a reference to the next element in the list.",
+  "Python List": "An array-based implementation of the list Abstract Data Type (ADT) in Python, which can have efficiency issues when inserting and deleting items.",
+  "Node": "A class representing a single element of a linked list. It contains the data (item) and a reference to the next node in the list.",
+  "LinkedList Class": "A class representing a linked list itself. It contains methods that obey the same interface as the built-in list class in Python.",
+  "Private Class": "A class that is only meant to be used within a module by other classes, but not by client code.",
+  "Private Attributes": "Attributes of a class that are meant to be manipulated only within the class, not by client code.",
+  "_Node": "A class or object type in the given text, used to represent an individual node in a linked list. Each _Node object can contain an item (data) and a reference to the next node in the list.",
+  "None": "A special constant in Python that represents the absence of a value or a null value. It is an object of its own datatype, the NoneType.",
+  "linked list": "A data structure in computer science that consists of a sequence of nodes. Each node contains an item (data) and a reference (link) to the next node in the sequence.",
+  "node1, node2, node3": "Instances of the _Node class in the given text. They are used to represent individual nodes in a linked list. Each node can contain an item (data) and a reference to the next node in the list.",
+  "item": "The data stored in a node of a linked list. In the given text, the items are numbers (10, 20, 30).",
+  "linky": "An instance of a LinkedList in the given text. It is used to represent a linked list that can contain multiple _Node objects.",
+  "memory model diagrams": "Visual representations used in the text to illustrate how linked lists and their nodes are stored in memory.",
+  "private class": "A class that is intended to be used only within the context where it is defined. In the given text, the _Node class is indicated as private, meaning it should not be accessed directly by client code."
+}

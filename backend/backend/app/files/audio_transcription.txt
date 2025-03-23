@@ -1,0 +1,4 @@
+=== Audio Transcription ===
+
+The stack abstract datatype is very simple, a stack contains 0 or more items. When you add an item, it goes to the top of the stack. We call this pushing to the stack. When you remove an item, this is called popping from the stack. It is removed also from the top. We call this last in first out.
+
