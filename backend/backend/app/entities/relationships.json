@@ -3,13 +3,13 @@
     "source": "1",
     "target": "2",
     "id": "1-2",
-    "label": "works at"
+    "label": "teaches at"
   },
   {
     "source": "1",
     "target": "3",
     "id": "1-3",
-    "label": "belongs to"
+    "label": "is based in"
   },
   {
     "source": "1",
@@ -18,51 +18,87 @@
     "label": "lectures on"
   },
   {
-    "source": "4",
-    "target": "2",
-    "id": "4-2",
-    "label": "is taught at"
-  },
-  {
-    "source": "5",
-    "target": "8",
-    "id": "5-8",
-    "label": "developed"
+    "source": "1",
+    "target": "5",
+    "id": "1-5",
+    "label": "teaches"
   },
   {
     "source": "6",
-    "target": "42",
-    "id": "6-42",
-    "label": "developed"
+    "target": "5",
+    "id": "6-5",
+    "label": "provides content for"
   },
   {
-    "source": "15",
-    "target": "16",
-    "id": "15-16",
+    "source": "6",
+    "target": "8",
+    "id": "6-8",
+    "label": "supplies"
+  },
+  {
+    "source": "8",
+    "target": "4",
+    "id": "8-4",
+    "label": "is used for"
+  },
+  {
+    "source": "9",
+    "target": "4",
+    "id": "9-4",
+    "label": "is discussed in the context of"
+  },
+  {
+    "source": "10",
+    "target": "4",
+    "id": "10-4",
+    "label": "is discussed in the context of"
+  },
+  {
+    "source": "11",
+    "target": "4",
+    "id": "11-4",
+    "label": "is discussed in the context of"
+  },
+  {
+    "source": "12",
+    "target": "4",
+    "id": "12-4",
+    "label": "is discussed in the context of"
+  },
+  {
+    "source": "13",
+    "target": "8",
+    "id": "13-8",
+    "label": "are added to"
+  },
+  {
+    "source": "14",
+    "target": "15",
+    "id": "14-15",
     "label": "is used in"
   },
   {
-    "source": "22",
-    "target": "23",
-    "id": "22-23",
-    "label": "transformed into"
+    "source": "18",
+    "target": "19",
+    "id": "18-19",
+    "label": "is used in"
   },
   {
-    "source": "39",
-    "target": "41",
-    "id": "39-41",
-    "label": "empties into"
+    "source": "61",
+    "target": "62",
+    "id": "61-62",
+    "label": "is administered via"
   },
   {
-    "source": "55",
-    "target": "56",
-    "id": "55-56",
-    "label": "administered via"
+    "source": "63",
+    "target": "64",
+    "id": "63-64",
+    "label": "has"
   },
   {
-    "source": "59",
-    "target": "60",
-    "id": "59-60",
-    "label": "scheduled on"
+    "source": "65",
+    "target": "66",
+    "id": "65-66",
+    "label": "is scheduled on"
   }
 ]

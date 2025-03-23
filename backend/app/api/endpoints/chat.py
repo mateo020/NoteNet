@@ -51,16 +51,23 @@ async def upload_file(file: UploadFile = File(...)):
         
         # Process the file based on its type
         try:
+            print("\n=== File Upload Debug ===")
+            print(f"Processing file: {unique_filename}")
+            print(f"Content type: {content_type}")
+            
             if content_type in allowed_audio_types:
+                print("Processing as audio file...")
                 combined_file = await process_and_combine_files(audio_path=str(file_path))
                 file_type = "audio"
-                print('audio')
-                print(combined_file)
             else:
+                print("Processing as document file...")
                 combined_file = await process_and_combine_files(document_path=str(file_path))
                 file_type = "document"
-                print('document')
-                print(combined_file)
+                
+            print(f"File processed successfully as {file_type}")
+            print(f"Combined file path: {combined_file}")
+            print("=== End File Upload Debug ===\n")
+            
             return {
                 "message": f"{file_type.capitalize()} file processed successfully",
                 "filename": unique_filename,
@@ -69,11 +76,15 @@ async def upload_file(file: UploadFile = File(...)):
                 "output_file": combined_file
             }
         except ValueError as ve:
+            print(f"❌ ValueError during file processing: {str(ve)}")
             raise HTTPException(
                 status_code=400,
                 detail=str(ve)
             )
         except Exception as e:
+            print(f"❌ Error processing file: {str(e)}")
+            import traceback
+            print(f"Traceback: {traceback.format_exc()}")
             raise HTTPException(
                 status_code=500,
                 detail=f"Error processing file: {str(e)}"
@@ -82,6 +93,9 @@ async def upload_file(file: UploadFile = File(...)):
         # Clean up the uploaded file if processing failed
         if file_path.exists():
             file_path.unlink()
+        print(f"❌ Error handling file: {str(e)}")
+        import traceback
+        print(f"Traceback: {traceback.format_exc()}")
         raise HTTPException(
             status_code=500,
             detail=f"An error occurred while handling the file: {str(e)}"
