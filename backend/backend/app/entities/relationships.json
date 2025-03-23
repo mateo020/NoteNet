@@ -1,0 +1,68 @@
+[
+  {
+    "source": "4",
+    "target": "11",
+    "id": "4-11",
+    "label": "works at"
+  },
+  {
+    "source": "4",
+    "target": "8",
+    "id": "4-8",
+    "label": "lectures on"
+  },
+  {
+    "source": "3",
+    "target": "4",
+    "id": "3-4",
+    "label": "is taught by"
+  },
+  {
+    "source": "7",
+    "target": "8",
+    "id": "7-8",
+    "label": "provides tools for"
+  },
+  {
+    "source": "6",
+    "target": "7",
+    "id": "6-7",
+    "label": "is provided by"
+  },
+  {
+    "source": "9",
+    "target": "17",
+    "id": "9-17",
+    "label": "is a part of"
+  },
+  {
+    "source": "13",
+    "target": "5",
+    "id": "13-5",
+    "label": "was transformed from"
+  },
+  {
+    "source": "18",
+    "target": "14",
+    "id": "18-14",
+    "label": "is a practice in"
+  },
+  {
+    "source": "1",
+    "target": "2",
+    "id": "1-2",
+    "label": "empties into"
+  },
+  {
+    "source": "10",
+    "target": "12",
+    "id": "10-12",
+    "label": "covers"
+  },
+  {
+    "source": "15",
+    "target": "16",
+    "id": "15-16",
+    "label": "takes place on"
+  }
+]
