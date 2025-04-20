@@ -1,6 +1,7 @@
 # NoteNet
 ## Knowledge Graph Generation for Better Learning
-
+Devpost and demo: 
+https://devpost.com/software/notenet-x2jmqf
 ---
 
 ## The Problem
